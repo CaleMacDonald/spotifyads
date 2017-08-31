@@ -72,6 +72,8 @@ func (h *Hosts) Load() error {
 		if err != nil {
 			return err
 		}
+
+		lines = append(lines, line)
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -83,7 +85,7 @@ func (h *Hosts) Load() error {
 	return nil
 }
 
-func (h Hosts) Flush error {
+func (h Hosts) Flush() error {
 	file, err := os.Create(h.Path)
 	if err != nil {
 		return err
