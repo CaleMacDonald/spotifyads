@@ -132,6 +132,13 @@ func (h *Hosts) Add(ip string, hosts ...string) error {
 	return nil
 }
 
+func (h *Hosts) AddComment(value string) error {
+	endLine := NewHostsLine(commentChar + " " + value)
+	h.Lines = append(h.Lines, endLine)
+
+	return nil
+}
+
 // Return a bool if ip/host combo in hosts file.
 func (h Hosts) Has(ip string, host string) bool {
 	pos := h.getHostPosition(ip, host)
